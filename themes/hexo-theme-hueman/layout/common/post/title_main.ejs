@@ -1,0 +1,19 @@
+
+<%if(post.title.length>14){%>
+ <%post.title=post.title.substr(0,14)+"..."%>
+<%}%>
+<% if (post.link) { %>
+    <h1 itemprop="name" style="display:inline-block;font-size: 14px;">
+        <a class="<%= class_name %>" href="<%- url_for(post.link) %>" target="_blank" itemprop="url"><%= post.title %></a>
+    </h1>
+<% } else if (post.title) { %>
+    <% if (typeof(linkable) !== 'undefined' && linkable) { %>
+        <h1 class="<%= class_name %>" itemprop="name" style="display:inline-block;font-size: 14px">
+        <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+        </h1>
+    <% } else { %>
+        <h1 class="<%= class_name %>" itemprop="name" style="display:inline-block;font-size: 14px">
+        <%= post.title %>
+        </h1>
+    <% } %>
+<% } %>

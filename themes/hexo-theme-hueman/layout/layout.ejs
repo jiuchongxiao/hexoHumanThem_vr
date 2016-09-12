@@ -1,0 +1,53 @@
+<%- partial('common/head') %>
+<body>
+    <div id="wrap">
+        <%- partial('common/header', null, {cache: !config.relative_link}) %>
+        <%if(is_home()){%>
+            <%- partial('common/lunbo')%>
+        <%}%>
+        <div>
+            <%if(!is_home()){%>
+            <%- partial('common/banner')%>
+            <%}%>
+        </div>
+        <div class="container">
+            <div class="main-body container-inner">
+                <%if(page.category){%>
+                <!--限制点击某些分类-->
+
+
+
+                    <div class="main-body-inner">
+
+                        <section id="main">
+                            <%- partial('common/content-title') %>
+                            <div class="main-body-content">
+                                <%- body %>
+                            </div>
+                        </section>
+                        <%- partial('common/sidebar') %>
+                    </div>
+
+
+
+                <%}else{%>
+                    <div class="main-body-inner" <%if(is_home()){%>style="padding-left: 0px;background:repeat-y left 0;"<%}%>>
+                        <section id="main">
+                            <div class="main-body-content">
+                                <%- body %>
+                            </div>
+
+                        </section>
+                        <%if(!is_home()){%>
+                            <%- partial('common/sidebar') %>
+                        <%}%>
+
+                    </div>
+                <%}%>
+            </div>
+        </div>
+        <%- partial('common/footer_main')%>
+        <%- partial('common/scripts') %>
+    </div>
+</body>
+</html>

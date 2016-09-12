@@ -1,0 +1,21 @@
+<aside id="sidebar">
+
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+
+
+
+    <div class="widgets-container">
+
+        <% if (theme.widgets) { %>
+            <% theme.widgets.forEach(function(widget) { %>
+
+        <%if(page.category!="产品系列" && page.category!="SAAS产品" && page.category!="奇幻云" && page.category!="特种影院" && page.category!="趣上课" && page.category!="精品案例"
+        ){%>
+                    <%- partial('widget/' + widget+"_news_style") %>
+                <%}else{%>
+                    <%- partial('widget/' + widget) %>
+                <%}%>
+            <% }) %>
+        <% } %>
+    </div>
+</aside>

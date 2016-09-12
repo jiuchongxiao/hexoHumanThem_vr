@@ -1,0 +1,13 @@
+
+
+<article class="article article-summary" style="width:100%;">
+
+    <div class="article-summary-inner">
+        <%- partial('post/title_news_style', { class_name: 'article-title', linkable: true }) %>
+
+        <div class="article-meta" style="display: inline-block;float: right;">
+            <p class="date"><time datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date) %></time></p>
+        </div>
+    </div>
+
+</article>

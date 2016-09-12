@@ -1,0 +1,13 @@
+<article class="article article-summary" style="margin-bottom: 0;">
+
+        <div class="article-summary-inner">
+            <% if (theme.customize.thumbnail === true) { %>
+            <%- partial('common/thumbnail', { counter: true }) %>
+            <% } %>
+
+            <div style="text-align: center;">
+
+                <%- partial('post/title', { class_name: 'article-title', linkable: true }) %>
+            </div>
+        </div>
+</article>

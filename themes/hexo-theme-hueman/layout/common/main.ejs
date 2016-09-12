@@ -1,0 +1,100 @@
+<% var last, postCount = 0; %>
+
+<div style="margin:5px;">
+    <div style="display:inline-block;width: 350px;padding:10px;margin: 9px;">
+        <h3 class="article-title">公司简介</h3>
+        <% site.posts.each(function(post, i) { %>
+            <%post.categories.each(function(c){%>
+                <%if(c.name=="公司简介"){%>
+                     <%- partial('summary_main', { post: post,newsType:"公司简介" }) %>
+                <%}%>
+            <%})%>
+        <%})%>
+    </div>
+    <div style="display:inline-block;width: 350px;padding:10px;margin: 8px;">
+        <h3 class="article-title">最新动态</h3>
+        <%var newDynamicCount=0%>
+        <%site.categories.findOne({name: '新闻动态'}).posts.sort('date', -1).limit(8).each(function(post) {%>
+        <%- partial('summary_main', { post: post,newsType:"最新动态" }) %>
+        <% })%>
+
+    </div>
+    <div style="display:inline-block;width: 350px;padding:10px;margin: 8px;">
+        <h3 class="article-title">联系方式</h3>
+        <% site.posts.each(function(post, i) { %>
+            <%post.categories.each(function(c){%>
+                <%if(c.name=="联系方式"){%>
+                     <%- partial('summary_main', { post: post,newsType:"联系方式" }) %>
+                <%}%>
+            <%})%>
+        <%})%>
+    </div>
+</div>
+
+<div id="wrapper">
+    <div class="wrapper wrapper-content">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h3 style="font-size:20px;margin: 10px 20px 20px 20px;">产品</h3>
+
+                    </div>
+                    <div class="ibox-content">
+                        <div class="carousel slide" id="carousel3">
+                            <div class="carousel-inner">
+                                <%var productionListCount=1%>
+                                <% site.posts.each(function(post, i) { %>
+                                    <% post.categories.each(function(c){%>
+
+                                        <%if(c.name=="SAAS产品" || c.name=="奇幻云" || c.name=="SAAS产品" || c.name=="特种影院" || c.name=="趣上课"){%>
+                                            <% if (theme.customize.thumbnail === true) { %>
+                                                <%if(productionListCount==1){%>
+                                                    <div class="item gallery active left">
+                                                        <div class="row">
+                                                <%}else if(productionListCount==5){%>
+                                                    <div class="item gallery next left">
+                                                        <div class="row">
+                                                <%}else if((productionListCount-1)%4==0 && productionListCount>5){%>
+                                                    <div class="item gallery">
+                                                        <div class="row">
+                                                <%}%>
+                                                        <div class="col-sm-3">
+                                                            <a href="<%- url_for(post.link ? post.link : post.path) %>" class="thumbnail">
+                                                                <% var thumbnailUrl = thumbnail(post) %>
+                                                                <% if (thumbnailUrl) { %>
+                                                                    <img style="height: 147.5px;width: 247.5px;" src="<%- thumbnailUrl%>" alt="<%= post.title %>" class="img-responsive">
+                                                                    <div style="text-align:center"><%=post.title%></div>
+                                                                <% } %>
+                                                            </a>
+                                                        </div>
+                                                <%if(productionListCount%4==0){%>
+                                                        </div>
+                                                    </div>
+                                                <%}%>
+                                                <%productionListCount=productionListCount+1%>
+                                            <% } %>
+                                        <%}%>
+                                    <%})%>
+                                <%})%>
+                                <%if((productionListCount-1)%4!=0){%>
+                                            </div>
+                                        </div>
+                                <%}%>
+
+                            </div>
+                            <a data-slide="prev" href="#carousel3" class="left carousel-control" style="background-image:none">
+                                <span class="icon-prev"></span>
+                            </a>
+                            <a data-slide="next" href="#carousel3" class="right carousel-control" style="background-image:none">
+                                <span class="icon-next"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

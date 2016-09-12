@@ -1,0 +1,33 @@
+<article class="article article-summary" style="width:100%;margin-bottom:0px;">
+    <%if(newsType=="最新动态"){%>
+        <div class="article-summary-inner">
+            <%- partial('post/title_main', { class_name: 'article-title', linkable: true }) %>
+
+            <div class="article-meta" style="display: inline-block;float: right;">
+                <p class="date"><time datetime="<%= date_xml(post.date) %>" itemprop="datePublished"><%= date(post.date) %></time></p>
+            </div>
+
+
+        </div>
+    <%}else if(newsType=="公司简介"){%>
+        <div class="article-summary-inner">
+            <% if (theme.customize.thumbnail === true) { %>
+            <%- partial('common/thumbnail', { counter: true }) %>
+            <% } %>
+            <p class="article-excerpt">
+                <% if (post.description){ %> <%- post.description %> <% } else { %> <%- post.excerpt %> <% } %>
+            </p>
+        </div>
+    <%}else if(newsType=="联系方式"){%>
+        <div class="article-summary-inner">
+            <p class="article-excerpt" style="height: 100%;">
+                <br>
+                邮箱：tanyafeng729@126.com
+                <br>
+                手机：18101311657
+                      18911903691<br>
+                地址：北京市东升科技园<br>
+            </p>
+        </div>
+    <%}%>
+</article>
