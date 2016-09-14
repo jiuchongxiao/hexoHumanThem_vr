@@ -6,7 +6,7 @@ categories:
 
 comments: false
 ---
-  
+赛欧必弗科技有限公司的资质如下：
 <img src="http://www.bjsobf.cn/img/honor/honor4.png">
 <img src="http://www.bjsobf.cn/img/honor/honor1.png">
 <img src="http://www.bjsobf.cn/img/honor/honor2.png">
