@@ -1,5 +1,8 @@
 <%- partial('common/head') %>
-<body>
+<script>
+    document.oncontextmenu=function(e){return false;}
+</script>
+<body oncontextmenu=self.event.returnValue=false onselectstart="return false">
     <div id="wrap">
         <%- partial('common/header', null, {cache: !config.relative_link}) %>
         <%if(is_home()){%>
